@@ -6,7 +6,7 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:47:19 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/21 12:54:54 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/04/21 15:47:04 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	ft_print_pointer(unsigned long long p);
 int	ft_print_int(int n);
 int	ft_print_unsigned(unsigned int n);
 int	ft_print_percent(void);
-int	ft_parser(const char *format, int *i, va_list args);
+int	ft_parser(const char *format, int *i, va_list *args);
 
 #endif
