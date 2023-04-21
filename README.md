@@ -18,7 +18,7 @@
 	<tbody>
 		<tr>
 			<td>%c</td>
-			<td>:x:</td>
+			<td>:white_check_mark:</td>
 		</tr>
 		<tr>
 			<td>%s</td>
@@ -26,31 +26,31 @@
 		</tr>
 		<tr>
 			<td>%p</td>
-			<td>:x:</td>
+			<td>:white_check_mark:</td>
 		</tr>
 		<tr>
 			<td>%d</td>
-			<td>:x:</td>
+			<td>:white_check_mark:</td>
 		</tr>
 		<tr>
 			<td>%i</td>
-			<td>:x:</td>
+			<td>:white_check_mark:</td>
 		</tr>
     <tr>
 			<td>%u</td>
-			<td>:x:</td>
+			<td>:white_check_mark:</td>
 		</tr>
     <tr>
 			<td>%x</td>
-			<td>:x:</td>
+			<td>:white_check_mark:</td>
 		</tr>
     <tr>
 			<td>%X</td>
-			<td>:x:</td>
+			<td>:white_check_mark:</td>
 		</tr>
     <tr>
 			<td>%%</td>
-			<td>:x:</td>
+			<td>:white_check_mark:</td>
 		</tr>
 	</tbody>
 </table>
