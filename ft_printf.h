@@ -6,7 +6,7 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:47:19 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/21 15:47:04 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/04/21 19:25:50 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,27 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 
-int	ft_printf(const char *format, ...);
-int	ft_print_char(int c);
-int	ft_print_string(char *str);
-int	ft_print_hexa(unsigned long long n, char c);
-int	ft_print_pointer(unsigned long long p);
-int	ft_print_int(int n);
-int	ft_print_unsigned(unsigned int n);
-int	ft_print_percent(void);
-int	ft_parser(const char *format, int *i, va_list *args);
+typedef struct s_flags
+{
+	int	minus;
+	int	zero;
+	int	width;
+	int	precision;
+	int	star;
+	int	plus;
+	int	hash;
+	int	space;
+}		t_flags;
+
+int		ft_printf(const char *format, ...);
+int		ft_print_char(int c);
+int		ft_print_string(char *str);
+int		ft_print_hexa(unsigned long long n, char c, t_flags *flags);
+int		ft_print_pointer(unsigned long long p, t_flags *flags);
+int		ft_print_int(int n, t_flags *flags);
+int		ft_print_unsigned(unsigned int n);
+int		ft_print_percent(void);
+int		ft_parser(const char *format, int *i, va_list *args);
+int		ft_intlen(int n);
 
 #endif

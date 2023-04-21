@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 12:54:07 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/21 19:36:09 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/04/21 17:26:14 by lgaudin           #+#    #+#             */
+/*   Updated: 2023/04/21 19:06:22 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_print_pointer(unsigned long long p, t_flags *flags)
+int	ft_intlen(int n)
 {
 	int	count;
 
 	count = 0;
-	flags->hash = 0;
-	count += ft_print_string("0x");
-	count += ft_print_hexa(p, 'x', flags);
+	if (n == -2147483648)
+		return (11);
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		n *= -1;
+		count++;
+	}
+	while (n > 0)
+	{
+		n /= 10;
+		count++;
+	}
 	return (count);
 }
