@@ -6,16 +6,19 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:55:33 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/22 16:05:21 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/04/22 17:20:20 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-void	ft_parse_flags(const char *format, int *i, t_flags *flags,
-		va_list *args, int *count)
+int	ft_parse_flags(const char *format, int *i, t_flags *flags,
+		va_list *args)
 {
+	int	count;
+
+	count = 0;
 	while (format[*i] == '-' || format[*i] == '0' || format[*i] == '*'
 		|| format[*i] == '+' || format[*i] == '#' || format[*i] == ' '
 		|| ft_isdigit(format[*i]))
@@ -25,7 +28,7 @@ void	ft_parse_flags(const char *format, int *i, t_flags *flags,
 		else if (format[*i] == '0')
 			flags->zero = 1;
 		else if (format[*i] == '*')
-			*count += ft_parse_width(format, i, flags, args);
+			count += ft_parse_width(format, i, flags, args);
 		else if (format[*i] == '+')
 			flags->plus = 1;
 		else if (format[*i] == '#')
@@ -33,9 +36,10 @@ void	ft_parse_flags(const char *format, int *i, t_flags *flags,
 		else if (format[*i] == ' ')
 			flags->space = 1;
 		else if (ft_isdigit(format[*i]))
-			*count += ft_parse_width(format, i, flags, args);
+			count += ft_parse_width(format, i, flags, args);
 		(*i)++;
 	}
+	return (count);
 }
 
 int	ft_parse_precision(const char *format, int *i, t_flags *flags)
@@ -60,7 +64,7 @@ int	ft_parser(const char *format, int *i, va_list *args)
 
 	ft_memset(&flags, 0, sizeof(t_flags));
 	count = 0;
-	ft_parse_flags(format, i, &flags, args, &count);
+	count += ft_parse_flags(format, i, &flags, args);
 	ft_parse_precision(format, i, &flags);
 	if (format[*i] == 'c')
 		count += ft_print_char(va_arg(*args, int));
