@@ -6,32 +6,34 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:55:33 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/21 19:35:18 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/04/22 16:05:21 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-void	ft_parse_flags(const char *format, int *i, t_flags *flags)
+void	ft_parse_flags(const char *format, int *i, t_flags *flags,
+		va_list *args, int *count)
 {
 	while (format[*i] == '-' || format[*i] == '0' || format[*i] == '*'
-		|| format[*i] == '+' || format[*i] == '#' || format[*i] == ' ')
+		|| format[*i] == '+' || format[*i] == '#' || format[*i] == ' '
+		|| ft_isdigit(format[*i]))
 	{
 		if (format[*i] == '-')
 			flags->minus = 1;
 		else if (format[*i] == '0')
 			flags->zero = 1;
 		else if (format[*i] == '*')
-			flags->star = 1;
+			*count += ft_parse_width(format, i, flags, args);
 		else if (format[*i] == '+')
 			flags->plus = 1;
 		else if (format[*i] == '#')
 			flags->hash = 1;
 		else if (format[*i] == ' ')
 			flags->space = 1;
-		// else if (ft_isdigit(format[*i]))
-		// 	flags->width = ft_atoi(&format[*i]);
+		else if (ft_isdigit(format[*i]))
+			*count += ft_parse_width(format, i, flags, args);
 		(*i)++;
 	}
 }
@@ -57,8 +59,9 @@ int	ft_parser(const char *format, int *i, va_list *args)
 	t_flags	flags;
 
 	ft_memset(&flags, 0, sizeof(t_flags));
-	ft_parse_flags(format, i, &flags);
 	count = 0;
+	ft_parse_flags(format, i, &flags, args, &count);
+	ft_parse_precision(format, i, &flags);
 	if (format[*i] == 'c')
 		count += ft_print_char(va_arg(*args, int));
 	else if (format[*i] == 's')
@@ -103,13 +106,13 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-int	main(void)
-{
-	int printf_return;
-	int ft_printf_return;
+// int	main(void)
+// {
+// 	int	printf_ret;
+// 	int	ft_printf_ret;
 
-	printf_return = printf("Hello %#p\n", "Salut");
-	ft_printf_return = ft_printf("Hello %#p\n", "Salut");
-	printf("Printf: %d and ft_printf: %d\n", printf_return, ft_printf_return);
-	return (0);
-}
+// 	printf_ret = printf(" %d ", -1);
+// 	ft_printf_ret = ft_printf(" %d ", -1);
+// 	printf("Printf: %d and ft_printf: %d\n", printf_ret, ft_printf_ret);
+// 	return (0);
+// }

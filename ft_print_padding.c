@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_padding.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 17:26:14 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/22 16:19:10 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/04/22 13:14:42 by lgaudin           #+#    #+#             */
+/*   Updated: 2023/04/22 13:15:00 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_intlen(long n)
+#include "ft_printf.h"
+
+int	ft_print_padding(int width, int len, char c)
 {
 	int	count;
 
 	count = 0;
-	if (n == 2147483648)
-		return (10);
-	if (n == 0)
-		return (1);
-	if (n < 0)
+	while (width - len > 0)
 	{
-		n *= -1;
+		ft_putchar_fd(c, 1);
 		count++;
-	}
-	while (n > 0)
-	{
-		n /= 10;
-		count++;
+		width--;
 	}
 	return (count);
 }

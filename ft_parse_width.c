@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   ft_parse_width.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/21 17:26:14 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/22 16:19:10 by lgaudin          ###   ########.fr       */
+/*   Created: 2023/04/22 13:15:18 by lgaudin           #+#    #+#             */
+/*   Updated: 2023/04/22 13:41:33 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_intlen(long n)
+#include "ft_printf.h"
+
+int	ft_parse_width(const char *format, int *i, t_flags *flags, va_list *args)
 {
 	int	count;
 
 	count = 0;
-	if (n == 2147483648)
-		return (10);
-	if (n == 0)
-		return (1);
-	if (n < 0)
+	if (format[*i] == '*')
 	{
-		n *= -1;
-		count++;
+		flags->width = va_arg(*args, int);
+		if (flags->width < 0)
+		{
+			flags->minus = 1;
+			flags->width = -flags->width;
+		}
 	}
-	while (n > 0)
+	else if (ft_isdigit(format[*i]))
 	{
-		n /= 10;
-		count++;
+		flags->width = ft_atoi(&format[*i]);
+		*i += ft_intlen(flags->width) - 1;
 	}
+	count += ft_intlen(flags->width);
 	return (count);
 }
