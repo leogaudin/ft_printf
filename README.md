@@ -5,6 +5,8 @@
 <img src="https://img.shields.io/badge/norminette-passing-success"/>
 <a href="https://github.com/xicodomingues/francinette"><img src="https://img.shields.io/badge/francinette-passing-success" /></a>
 <img src="https://img.shields.io/badge/moulinette-102%2F100-success" />
+<br>
+<a href="https://wakatime.com/badge/user/db0e5671-cec5-4e7b-9d41-19a881e67f7d/project/f710ce28-d096-4fe4-8569-7df4e4208c6d"><img src="https://wakatime.com/badge/user/db0e5671-cec5-4e7b-9d41-19a881e67f7d/project/f710ce28-d096-4fe4-8569-7df4e4208c6d.svg" alt="wakatime"></a>
 
 <p><i>⚠️ The current code on the <code>main</code> branch is dirty and comes from an incomplete attempt of supporting the flags. The code still works for the mandatory part but for readability purposes, please refer to the source code in the v1.0.0 release.</i></p>
 
