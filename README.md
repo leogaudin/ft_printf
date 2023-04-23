@@ -6,6 +6,8 @@
 <a href="https://github.com/xicodomingues/francinette"><img src="https://img.shields.io/badge/francinette-unknown-important" /></a>
 <img src="https://img.shields.io/badge/moulinette-unknown-important" />
 
+<p><i>⚠️ The current code on the <code>main</code> branch is dirty and comes from an incomplete attempt of supporting the flags. The code still works for the mandatory part but for readability purposes, please refer to the source code in the v1.0.0 release.</i></p>
+
 <h2>Mandatory part</h2>
 
 <table>
