@@ -3,8 +3,8 @@
 <div align="center">
 
 <img src="https://img.shields.io/badge/norminette-passing-success"/>
-<a href="https://github.com/xicodomingues/francinette"><img src="https://img.shields.io/badge/francinette-unknown-important" /></a>
-<img src="https://img.shields.io/badge/moulinette-unknown-important" />
+<a href="https://github.com/xicodomingues/francinette"><img src="https://img.shields.io/badge/francinette-passing-success" /></a>
+<img src="https://img.shields.io/badge/moulinette-102%2F100-success" />
 
 <p><i>⚠️ The current code on the <code>main</code> branch is dirty and comes from an incomplete attempt of supporting the flags. The code still works for the mandatory part but for readability purposes, please refer to the source code in the v1.0.0 release.</i></p>
 
