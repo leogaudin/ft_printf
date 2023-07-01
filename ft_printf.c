@@ -6,53 +6,27 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 10:55:33 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/22 17:20:20 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/07/01 18:29:25 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_parse_flags(const char *format, int *i, t_flags *flags,
-		va_list *args)
+int	ft_parse_flags(const char *format, int *i, t_flags *flags)
 {
 	int	count;
 
 	count = 0;
-	while (format[*i] == '-' || format[*i] == '0' || format[*i] == '*'
-		|| format[*i] == '+' || format[*i] == '#' || format[*i] == ' '
-		|| ft_isdigit(format[*i]))
+	while (format[*i] == '+' || format[*i] == '#' || format[*i] == ' ')
 	{
-		if (format[*i] == '-')
-			flags->minus = 1;
-		else if (format[*i] == '0')
-			flags->zero = 1;
-		else if (format[*i] == '*')
-			count += ft_parse_width(format, i, flags, args);
-		else if (format[*i] == '+')
+		if (format[*i] == '+')
 			flags->plus = 1;
 		else if (format[*i] == '#')
 			flags->hash = 1;
 		else if (format[*i] == ' ')
 			flags->space = 1;
-		else if (ft_isdigit(format[*i]))
-			count += ft_parse_width(format, i, flags, args);
 		(*i)++;
-	}
-	return (count);
-}
-
-int	ft_parse_precision(const char *format, int *i, t_flags *flags)
-{
-	int	count;
-
-	count = 0;
-	if (format[*i] == '.')
-	{
-		*i += 1;
-		flags->precision = ft_atoi(&format[*i]);
-		*i += ft_intlen(flags->precision);
-		count++;
 	}
 	return (count);
 }
@@ -64,8 +38,7 @@ int	ft_parser(const char *format, int *i, va_list *args)
 
 	ft_memset(&flags, 0, sizeof(t_flags));
 	count = 0;
-	count += ft_parse_flags(format, i, &flags, args);
-	ft_parse_precision(format, i, &flags);
+	count += ft_parse_flags(format, i, &flags);
 	if (format[*i] == 'c')
 		count += ft_print_char(va_arg(*args, int));
 	else if (format[*i] == 's')

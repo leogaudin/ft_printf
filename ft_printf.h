@@ -6,7 +6,7 @@
 /*   By: lgaudin <lgaudin@student.42malaga.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:47:19 by lgaudin           #+#    #+#             */
-/*   Updated: 2023/04/22 16:08:09 by lgaudin          ###   ########.fr       */
+/*   Updated: 2023/07/01 18:29:34 by lgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 
 typedef struct s_flags
 {
-	int	minus;
-	int	zero;
-	int	width;
-	int	precision;
-	int	star;
 	int	plus;
 	int	hash;
 	int	space;
@@ -38,8 +33,5 @@ int		ft_print_unsigned(unsigned int n);
 int		ft_print_percent(void);
 int		ft_parser(const char *format, int *i, va_list *args);
 int		ft_intlen(long n);
-int		ft_parse_width(const char *format, int *i, t_flags *flags,
-			va_list *args);
-int		ft_print_padding(int width, int len, char c);
 
 #endif
